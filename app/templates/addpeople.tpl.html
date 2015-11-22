@@ -1,0 +1,9 @@
+<h2>{{vm.title}}</h2>
+<form ng-submit = 'vm.addPerson(person)'>
+  <input type="text" ng-model="person.name" placeholder="name">
+  <input type="text" ng-model="person.relation" placeholder="relation">
+  <input type="text" ng-model="person.food" placeholder="Bringing food?">
+  <input type="date" ng-model="person.dateComing" placeholder="Date Coming">
+  <input type="date" ng-model="person.dateLeaving" placeholder="Date Leaving">
+  <button>Add Person</button>
+</form>  
