@@ -53,7 +53,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var AddController = function AddController(PARSE, $http, $cookies) {
+var AddController = function AddController(PARSE, $http, $cookies, $state) {
   var vm = this;
   vm.title = "Add";
   function Person(obj) {
@@ -84,11 +84,12 @@ var AddController = function AddController(PARSE, $http, $cookies) {
       objectId: userId
     };
     $http.post(PARSE.URL + 'classes/people', c, PARSE.CONFIG).then(function (res) {
-      console.log(res);
+
+      $state.go('root.people');
     });
   };
 };
-AddController.$inject = ['PARSE', '$http', '$cookies'];
+AddController.$inject = ['PARSE', '$http', '$cookies', '$state'];
 exports['default'] = AddController;
 module.exports = exports['default'];
 
@@ -133,16 +134,22 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var PeopleController = function PeopleController($cookies, $state) {
+var PeopleController = function PeopleController($cookies, $state, $http, PARSE) {
   var vm = this;
   vm.title = "People";
   var token = $cookies.get('auth_token');
+  var userId = $cookies.get('objectId');
+  console.log(userId);
   if (!token) {
     alert('You are not logged in');
     $state.go('root.home');
-  }
+  };
+
+  $http.get(PARSE.URL + 'classes/people', PARSE.CONFIG).then(function (res) {
+    console.log(res);
+  });
 };
-PeopleController.$inject = ['$cookies', '$state'];
+PeopleController.$inject = ['$cookies', '$state', '$http', 'PARSE'];
 exports['default'] = PeopleController;
 module.exports = exports['default'];
 

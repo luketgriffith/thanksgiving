@@ -1,4 +1,4 @@
-let AddController = function(PARSE, $http, $cookies){
+let AddController = function(PARSE, $http, $cookies, $state){
   let vm = this;
   vm.title="Add";
   function Person(obj){
@@ -29,10 +29,11 @@ let AddController = function(PARSE, $http, $cookies){
       objectId: userId
     };
     $http.post(PARSE.URL+'classes/people', c, PARSE.CONFIG).then((res)=>{
-      console.log(res);
+      
+      $state.go('root.people');
     })
   };
 
 };
-AddController.$inject = ['PARSE', '$http', '$cookies'];
+AddController.$inject = ['PARSE', '$http', '$cookies', '$state'];
 export default AddController;

@@ -1,6 +1,6 @@
-## Welcome to My Project
+## Thanksgiving app
 
-> I am your Readme.md file, you should probably update me.
+> a Thanksgiving side project for mom to track who's coming, what they're bringing, and how long they're staying.
 
 
 ## Usage
